@@ -2,7 +2,7 @@ from animal import Animal
 
 class Ave(Animal):
     # Contrutor
-    def __init__(self, nome, idade, pode_voar):
+    def __init__(self, nome:str, idade:float, pode_voar:bool):
         # Herança
         super().__init__(nome, idade)
         # Atributos
@@ -10,8 +10,11 @@ class Ave(Animal):
 
     # Métodos
 
+    def fazer_som(self):
+        print("A ave está cantando.")
+
     def movimentar(self):
         if self.__pode_voar == True:
-            print("Voando")
+            print("A ave está voando")
         else:
-            print("Andando")
+            print("A ave está andando")
