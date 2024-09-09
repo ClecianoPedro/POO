@@ -1,4 +1,5 @@
 from conta_bancaria import ContaBancaria
+from Exception.invalid_value_error import InvalidValue
 
 class ContaCorrente(ContaBancaria):
     # Construtor
@@ -13,8 +14,12 @@ class ContaCorrente(ContaBancaria):
         return f"{self.titular} {self._ContaBancaria__saldo} {self.__limite_cheque_especial}"
     
     def sacar(self, valor):  # Polimorfismo
-        if valor <= self._ContaBancaria__saldo + self.__limite_cheque_especial and valor > 0:
-            self._ContaBancaria__saldo -= valor
-            return True
+        if isinstance(valor, int):
+            if valor <= 0:
+                raise InvalidValue("Valor deve ser maior que zero")
+        
+            if valor <= self._ContaBancaria__saldo + self.__limite_cheque_especial:
+                self._ContaBancaria__saldo -= valor
+                return True
         return False
             

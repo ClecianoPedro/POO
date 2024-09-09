@@ -3,7 +3,7 @@ from mamifero import Mamifero
 from reptil import Reptil
 
 print("Mamifero")
-mamifero = Mamifero("Onça", 10, True)
+mamifero = Mamifero("Onça", 5.0, True)
 mamifero.fazer_som()
 mamifero.movimentar()
 
@@ -13,11 +13,11 @@ ave.fazer_som()
 ave.movimentar()
 
 print("Ave que voa")
-ave2 = Ave("Pássaro", 2, True)
+ave2 = Ave("Pássaro", 1.5, True)
 ave2.fazer_som()
 ave2.movimentar()
 
 print("Reptil")
-reptil = Reptil("Lagarto", 2, "Escamosa")
+reptil = Reptil("Lagarto", 1.8, "Escamosa")
 reptil.fazer_som()
 reptil.movimentar()

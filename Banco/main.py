@@ -1,5 +1,6 @@
 from conta_corrente import ContaCorrente
 from conta_poupanca import ContaPoupanca
+from Exception.invalid_value_error import InvalidValue
 
 def menu_conta():
     print("1 - Detalhes da Conta")
@@ -17,18 +18,34 @@ def main():
     print("Testando Classes...")
     print("Conta Poupança")
     print(conta_poupanca.detalhar_conta())
-    conta_poupanca.depositar(500)
+    try:
+        conta_poupanca.depositar("500")
+    except TypeError:
+        print("O valor deve ser inteiro positivo")
+
     print(conta_poupanca.detalhar_conta())
-    conta_poupanca.sacar(200)
+    try:
+        conta_poupanca.sacar(-2)
+    except InvalidValue as e:
+        print(e.text)
+        
     print(conta_poupanca.detalhar_conta())
     print(conta_poupanca.render_juros(10))
     print("Conta Corrente")
     print(conta_corrente.detalhar_conta())
     conta_corrente.depositar(1000)
     print(conta_corrente.detalhar_conta())
-    conta_corrente.sacar(2000)
+    try:
+        conta_corrente.sacar(2000)
+    except InvalidValue as e:
+        print(e.text)
     print(conta_corrente.detalhar_conta())
-    conta_corrente.depositar(500)
+    try:
+        conta_corrente.depositar("500")
+    except InvalidValue as e:
+        print("Valor deve ser inteiro")
+    except TypeError as e:
+        print("Valor deve ser inteiro")
     print(conta_corrente.detalhar_conta())
     print("Fim do Teste...")
 

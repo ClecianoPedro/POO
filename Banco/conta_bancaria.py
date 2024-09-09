@@ -1,3 +1,5 @@
+from Exception.invalid_value_error import InvalidValue
+
 class ContaBancaria:
     #Construtor
     def __init__(self, titular, senha):
@@ -10,18 +12,20 @@ class ContaBancaria:
     def detalhar_conta(self):  # Polimorfismo
         pass
     
-    def depositar(self, valor):
-        self.__saldo += valor
-        return True
+    def depositar(self, valor:int) -> bool:
+        if valor > 0:
+            self.__saldo += valor
+            return True
+        raise InvalidValue("Valor deve ser maior que zero")
 
-    def sacar(self, valor):  # Polimorfismo
+    def sacar(self, valor:int):  # Polimorfismo
         pass
 
-    def alterar_senha(self, nova_senha):
+    def alterar_senha(self, nova_senha:str) -> bool:
         self.__senha = nova_senha
         return True
 
-    def validar_senha(self, senha):
+    def validar_senha(self, senha:str):
         if senha == self.__senha:
             return True
         return False

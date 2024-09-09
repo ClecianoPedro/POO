@@ -1,4 +1,6 @@
 from conta_bancaria import ContaBancaria
+from Exception.invalid_value_error import InvalidValue
+
 class ContaPoupanca(ContaBancaria):
     # Construtor
     def __init__(self, titular, senha):
@@ -9,10 +11,14 @@ class ContaPoupanca(ContaBancaria):
     def detalhar_conta(self):  # Polimorfismo
         return f"{self.titular} {self._ContaBancaria__saldo}"
     
-    def sacar(self, valor):  # Polimorfismo
-        if valor <= self._ContaBancaria__saldo and valor > 0:
-            self._ContaBancaria__saldo -= valor
-            return True
+    def sacar(self, valor:int) -> bool: # Polimorfismo
+        if isinstance(valor, int):
+            if valor <= 0:
+                raise InvalidValue("Valor deve ser maior que zero")
+        
+            if valor <= self._ContaBancaria__saldo:
+                self._ContaBancaria__saldo -= valor
+                return True
         return False
     
     def render_juros(self, porcentagem):
