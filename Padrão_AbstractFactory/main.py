@@ -9,18 +9,18 @@ def main():
   # Criando SUV a Gasolina
   suv_gasolina = fabrica_gasolina.criar_suv()
   
-  print(f"Sedan a Gasolina: {sedan_gasolina.descricao()}")
-  print(f"SUV a Gasolina: {suv_gasolina.descricao()}\n")
+  print(f"Sedan a Gasolina: {sedan_gasolina.descricao("Sedan a Gasolina")}")
+  print(f"SUV a Gasolina: {suv_gasolina.descricao("SUV a Gasolina")}\n")
 
-  # Instanciando a Fabrica de Carro Eletrico
+  # Instanciando a Fabrica de Carro Elétrico
   fabrica_eletrico = FabricaCarroEletrico()
-  # Criando Sedan Eletrico
+  # Criando Sedan Elétrico
   sedan_eletrico = fabrica_eletrico.criar_sedan()
-  # Criando SUV Eletrico
+  # Criando SUV Elétrico
   suv_eletrico = fabrica_eletrico.criar_suv()
   
-  print(f"Sedan Eletrico: {sedan_eletrico.descricao()}")
-  print(f"SUV Eletrico: {suv_eletrico.descricao()}")
+  print(f"Sedan Elétrico: {sedan_eletrico.descricao("Sedan Elétrico")}")
+  print(f"SUV Elétrico: {suv_eletrico.descricao("SUV Elétrico")}")
 
 if __name__ == "__main__":
   main()
